@@ -74,13 +74,29 @@ def uid():
 # ─────────────────────────────────────────────
 
 def container(settings, elements, is_inner=True):
+    # Normalize settings to use correct Elementor control names
+    renames = {
+        "justify_content": "flex_justify_content",
+        "align_items": "flex_align_items",
+        "align_content": "flex_align_content",
+    }
+    fixed = {}
+    for k, v in settings.items():
+        k2 = renames.get(k, k)
+        # Convert gap:{size,unit} to flex_gap gaps format
+        if k == "gap" and isinstance(v, dict) and "size" in v:
+            fixed["flex_gap"] = gap(v["size"], v.get("unit", "px"))
+            continue
+        # Ensure background_color always has background_background: classic
+        if k == "background_color" and "background_background" not in settings:
+            fixed["background_background"] = "classic"
+        fixed[k2] = v
     return {
         "id": uid(),
         "elType": "container",
         "isInner": is_inner,
-        "settings": settings,
+        "settings": fixed,
         "elements": elements,
-        "widgetType": None,
     }
 
 def section_container(settings, elements):
@@ -88,12 +104,21 @@ def section_container(settings, elements):
     return container(settings, elements, is_inner=False)
 
 def widget(widget_type, settings):
+    fixed = dict(settings)
+    if widget_type == "button":
+        # background_color needs background_background: classic
+        if "background_color" in fixed and "background_background" not in fixed:
+            fixed["background_background"] = "classic"
+        # hover_background_color is the wrong key
+        if "hover_background_color" in fixed:
+            fixed["button_background_hover_color"] = fixed.pop("hover_background_color")
+            fixed["button_background_hover_background"] = "classic"
     return {
         "id": uid(),
         "elType": "widget",
         "isInner": False,
         "widgetType": widget_type,
-        "settings": settings,
+        "settings": fixed,
         "elements": [],
     }
 
@@ -103,6 +128,14 @@ def pad(top, right, bottom, left, unit="px"):
 
 def size(v, unit="px"):
     return {"size": v, "unit": unit}
+
+def gap(v, unit="px"):
+    """Elementor flex_gap control format (type: gaps)."""
+    return {"column": v, "row": v, "unit": unit, "isLinked": True}
+
+def bg(color):
+    """Container/widget background color — requires background_background: classic."""
+    return {"background_background": "classic", "background_color": color}
 
 def typography(family, weight, sz, unit="px"):
     return {
