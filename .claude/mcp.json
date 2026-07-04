@@ -1,0 +1,13 @@
+{
+  "mcpServers": {
+    "novamira-wordpress-125475": {
+      "command": "npx",
+      "args": ["-y", "@automattic/mcp-wordpress-remote@latest"],
+      "env": {
+        "WP_API_URL": "https://wordpress-1254753-6532124.cloudwaysapps.com/wp-json/mcp/novamira",
+        "WP_API_USERNAME": "jtoews@consult-smart.com",
+        "WP_API_PASSWORD": "YJjCpzthlwizjnPCMMGF9aNO"
+      }
+    }
+  }
+}
