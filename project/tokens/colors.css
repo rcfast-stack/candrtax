@@ -1,0 +1,37 @@
+:root {
+  /* Base palette */
+  --color-navy: #1B2A5E;
+  --color-royal-blue: #0A4A93;
+  --color-growth-red: #E23A28;
+  --color-ice-blue: #EAF0F8;
+  --color-off-white: #F7F8FA;
+  --color-slate: #5A6B8C;
+  --color-midnight: #121D42;
+  --color-white: #FFFFFF;
+
+  /* Semantic aliases */
+  --surface-page: var(--color-off-white);
+  --surface-card: var(--color-white);
+  --surface-alt: var(--color-ice-blue);
+  --surface-inverse: var(--color-navy);
+  --surface-inverse-deep: var(--color-midnight);
+
+  --text-heading: var(--color-navy);
+  --text-body: var(--color-midnight);
+  --text-muted: var(--color-slate);
+  --text-inverse: var(--color-off-white);
+  --text-link: var(--color-royal-blue);
+  --text-link-hover: var(--color-navy);
+
+  --border-subtle: #D7DEEA;
+  --border-strong: var(--color-slate);
+
+  --accent-cta: var(--color-growth-red);
+  --accent-cta-hover: #C22E1F;
+  --accent-cta-text: var(--color-off-white);
+
+  --icon-primary: var(--color-royal-blue);
+  --icon-on-dark: var(--color-off-white);
+
+  --focus-ring: var(--color-royal-blue);
+}

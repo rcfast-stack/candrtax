@@ -1,0 +1,27 @@
+:root {
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-8: 32px;
+  --space-10: 40px;
+  --space-12: 48px;
+  --space-16: 64px;
+  --space-20: 80px;
+  --space-24: 96px;
+  --space-32: 128px;
+
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 16px;
+  --radius-pill: 999px;
+
+  --shadow-sm: 0 1px 3px rgba(18, 29, 66, 0.08);
+  --shadow-md: 0 4px 16px rgba(18, 29, 66, 0.10);
+  --shadow-lg: 0 12px 32px rgba(18, 29, 66, 0.14);
+
+  --container-max: 1180px;
+  --section-pad-y: var(--space-24);
+}

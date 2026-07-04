@@ -1,0 +1,23 @@
+<!-- @dsCard group="Colors" viewport="700x180" name="Semantic Usage" subtitle="Where each color is used in UI" -->
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" href="../styles.css">
+<style>
+  body{margin:0;font-family:var(--font-body);background:var(--surface-page);padding:20px;box-sizing:border-box;}
+  .grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;font-size:13px;color:var(--text-body);}
+  .item{display:flex;align-items:center;gap:10px;}
+  .dot{width:16px;height:16px;border-radius:4px;flex-shrink:0;}
+</style>
+</head>
+<body>
+<div class="grid">
+  <div class="item"><div class="dot" style="background:var(--color-navy);"></div>Headers, nav, footer background</div>
+  <div class="item"><div class="dot" style="background:var(--color-royal-blue);"></div>Links, icons, secondary buttons</div>
+  <div class="item"><div class="dot" style="background:var(--color-growth-red);"></div>CTA buttons only — never decorative</div>
+  <div class="item"><div class="dot" style="background:var(--color-ice-blue); border:1px solid var(--border-subtle);"></div>Alt section backgrounds, icon chips</div>
+  <div class="item"><div class="dot" style="background:var(--color-off-white); border:1px solid var(--border-subtle);"></div>Page background</div>
+  <div class="item"><div class="dot" style="background:var(--color-slate);"></div>Muted/secondary text</div>
+</div>
+</body>
+</html>

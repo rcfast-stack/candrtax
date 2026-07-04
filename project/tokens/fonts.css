@@ -1,0 +1,5 @@
+/* No brand font files were supplied. Substituting nearest Google Fonts matches:
+   - Headings: Poppins (geometric bold sans, matches the blocky capitals in the C&R wordmark)
+   - Body: Inter (clean, highly legible sans for dense service/contact copy)
+   Flagged in readme.md — swap in real brand fonts if/when supplied. */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@600;700;800&family=Inter:wght@400;500;600;700&display=swap');

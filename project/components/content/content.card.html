@@ -1,0 +1,35 @@
+<!-- @dsCard group="Components" viewport="700x900" name="Content: Service, Contact, Hours cards" subtitle="ServiceCategoryCard, ContactCard, HoursCard" -->
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" href="../../styles.css">
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+<script src="../../_ds_bundle.js"></script>
+<style>body{margin:0;background:var(--surface-page);}</style>
+</head>
+<body>
+<div id="root"></div>
+<script type="text/babel">
+const { ServiceCategoryCard, ContactCard, HoursCard } = window.CRTaxServicesDesignSystem_70ca00;
+
+function Demo() {
+  return (
+    <div style={{padding:24, display:'flex', flexDirection:'column', gap:24, maxWidth:340}}>
+      <ServiceCategoryCard
+        icon="calculator"
+        title="Income Tax"
+        items={['Individual','Small Business / Self Employed','ITIN Applications','Audit Services']}
+        note="Virtual/online prep available any day, all year."
+      />
+      <ContactCard />
+      <HoursCard season="tax" />
+    </div>
+  );
+}
+ReactDOM.createRoot(document.getElementById('root')).render(<Demo />);
+</script>
+</body>
+</html>

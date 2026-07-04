@@ -1,0 +1,45 @@
+<!-- @dsCard group="Components" viewport="700x520" name="Core: Button, Badge, Card" subtitle="Buttons, badges, and the base card surface" -->
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" href="../../styles.css">
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+<script src="../../_ds_bundle.js"></script>
+<style>body{margin:0;background:var(--surface-page);font-family:var(--font-body);}</style>
+</head>
+<body>
+<div id="root"></div>
+<script type="text/babel">
+const { Button, Badge, Card } = window.CRTaxServicesDesignSystem_70ca00;
+
+function Demo() {
+  return (
+    <div style={{padding:24, display:'flex', flexDirection:'column', gap:20}}>
+      <div style={{display:'flex', gap:12, flexWrap:'wrap', alignItems:'center'}}>
+        <Button variant="primary">Call Now</Button>
+        <Button variant="secondary">View Services</Button>
+        <Button variant="outline">Learn More</Button>
+        <Button variant="ghost">Ghost Link</Button>
+        <Button variant="primary" size="sm">Small</Button>
+        <Button variant="primary" disabled>Disabled</Button>
+      </div>
+      <div style={{display:'flex', gap:10, flexWrap:'wrap'}}>
+        <Badge tone="navy">Navy</Badge>
+        <Badge tone="ice">Ice</Badge>
+        <Badge tone="red">Tax Season</Badge>
+        <Badge tone="outline">Outline</Badge>
+      </div>
+      <Card style={{maxWidth:340}}>
+        <h3 style={{margin:'0 0 8px', fontFamily:'var(--font-heading)', color:'var(--text-heading)'}}>Card title</h3>
+        <p style={{margin:0, color:'var(--text-muted)', fontSize:'var(--text-sm)'}}>White surface, subtle border, soft shadow, 16px radius.</p>
+      </Card>
+    </div>
+  );
+}
+ReactDOM.createRoot(document.getElementById('root')).render(<Demo />);
+</script>
+</body>
+</html>
