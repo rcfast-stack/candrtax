@@ -217,30 +217,25 @@ FA_MAP = {
 
 def featured_card(icon_name, accent, title, paragraphs, chips, note=None, link_label=None, link_href=None, is_last=False):
     icon_fa = FA_MAP.get(icon_name, icon_name)
+    # Icon medallion: 52×52 fixed square. Use text-editor with inline HTML so size
+    # never stretches as a flex child. The icon itself is a Font Awesome glyph at 26px.
+    icon_box_html = (
+        f'<div style="width:52px;height:52px;border-radius:10px;background:{accent};'
+        f'display:flex;align-items:center;justify-content:center;flex-shrink:0;">'
+        f'<i class="fas fa-{icon_fa}" style="font-size:26px;color:{WHITE};"></i>'
+        f'</div>'
+    )
     inner_elements = [
-        # Icon + title row
-        con(
-            {"flex_direction": "row", "flex_align_items": "center", "flex_gap": gap(16),
-             "padding": pad(0,0,18,0)},
-            [
-                con(
-                    {"width": size(52), "min_height": size(52),
-                     "border_radius": pad(8,8,8,8),
-                     "background_color": accent,
-                     "flex_justify_content": "center", "flex_align_items": "center",
-                     "padding": pad(0,0,0,0)},
-                    [wgt("icon", {"selected_icon": fa(icon_fa), "size": size(26), "icon_color": WHITE})]
-                ),
-                wgt("heading", {
-                    "title": title, "header_size": "h3",
-                    "typography_typography": "custom",
-                    "typography_font_family": "Poppins",
-                    "typography_font_weight": "700",
-                    "typography_font_size": size(22),
-                    "title_color": "#111827",
-                }),
-            ]
-        ),
+        # Icon + title row — both rendered in a single text-editor so sizing is pixel-exact
+        wgt("text-editor", {
+            "editor": (
+                f'<div style="display:flex;align-items:center;gap:16px;margin-bottom:18px;">'
+                f'{icon_box_html}'
+                f'<h3 style="font-family:Poppins,sans-serif;font-weight:700;font-size:30px;'
+                f'color:#111827;margin:0;line-height:1.2;">{title}</h3>'
+                f'</div>'
+            )
+        }),
     ]
 
     for p in paragraphs:
@@ -267,7 +262,7 @@ def featured_card(icon_name, accent, title, paragraphs, chips, note=None, link_l
             "border_border": "solid",
             "border_width": pad(4, 1, 1, 1),
             "border_color": accent,
-            "border_radius": pad(8, 8, 8, 8),
+            "border_radius": pad(16, 16, 16, 16),
             "box_shadow_box_shadow_type": "yes",
             "box_shadow_box_shadow": {"horizontal":0,"vertical":2,"blur":8,"spread":0,"color":"rgba(0,0,0,0.08)"},
             "padding": pad(40, 40, 40, 40),
