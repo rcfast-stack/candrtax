@@ -615,7 +615,9 @@ def save_elementor(post_id, elementor_data):
     result = php(f"""
 $j = file_get_contents(WP_CONTENT_DIR . '/novamira-sandbox/el_{post_id}.json');
 $d = json_decode($j, true);
-update_post_meta({post_id}, '_elementor_data', wp_slash(json_encode($d)));
+$slashed = wp_slash(json_encode($d));
+update_post_meta({post_id}, '_elementor_data', $slashed);
+update_post_meta({post_id}, '_elementor_draft_data', $slashed);
 @unlink(WP_CONTENT_DIR . '/novamira-sandbox/el_{post_id}.json');
 $css_file = new Elementor\\Core\\Files\\CSS\\Post({post_id});
 $css_file->update();
