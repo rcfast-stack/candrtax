@@ -344,26 +344,18 @@ def home_why_trust():
 
 def home_service_area():
     cities = ["Fresno","Clovis","Sanger","Selma","Madera"]
-    city_pills = []
-    for city in cities:
-        city_pills.append(con(
-            {
-                "background_color":ICE_BLUE,
-                "border_border":"solid","border_width":pad(1,1,1,1),"border_color":BORDER,
-                "border_radius":pad(999,999,999,999),
-                "padding":pad(10,18,10,18),
-                "flex_direction":"row","align_items":"center","flex_gap":gap(8),
-            },
-            [
-                wgt("icon", {"selected_icon":{"library":"fa-solid","value":"fas fa-map-marker-alt"},"icon_size":size(14),"primary_color":ROYAL_BLUE}),
-                wgt("text-editor", {"editor":f'<span style="font-family:Inter,sans-serif;font-size:15px;font-weight:600;color:{NAVY};">{city}</span>'}),
-            ]
-        ))
-
-    pills_row = con(
-        {"flex_direction":"row","flex_wrap":"wrap","flex_gap":gap(12)},
-        city_pills
+    # Render all pills as inline HTML so icon + text stay pixel-exact
+    pill_spans = "".join(
+        f'<span style="display:inline-flex;align-items:center;gap:8px;padding:10px 18px;'
+        f'border-radius:999px;background:{ICE_BLUE};border:1px solid {BORDER};'
+        f'font-family:Inter,sans-serif;font-size:15px;font-weight:600;color:{NAVY};">'
+        f'<i class="fas fa-map-marker-alt" style="font-size:14px;color:{ROYAL_BLUE};"></i>'
+        f'{city}</span>'
+        for city in cities
     )
+    pills_row = wgt("text-editor", {
+        "editor": f'<div style="display:flex;flex-wrap:wrap;gap:12px;">{pill_spans}</div>'
+    })
 
     inner = con(
         {"content_width":"boxed","boxed_width":size(760),"flex_direction":"column","flex_gap":gap(24)},
